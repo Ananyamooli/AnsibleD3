@@ -1,0 +1,22 @@
+---
+- hosts: all
+  become: true
+  vars_files:
+    -variable.yaml  
+  tasks:
+    - name: install http webserver
+      yum:
+       name: httpd
+       state: present
+    - name: copy html file
+      template:
+        src: index.html
+        dest: /var/www/html/index.html
+      notify: 
+        - restart the service
+  handlers:
+    - name: restart the service
+      service: 
+        name: httpd
+        state: restarted 
+        enabled: true
