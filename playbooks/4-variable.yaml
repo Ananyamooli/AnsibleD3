@@ -15,7 +15,7 @@
          state: started
          enabled: true
     - name: copy the HTML file
-      template:
+      copy:
        src: index.html
        dest: /var/www/html/index.html
 
