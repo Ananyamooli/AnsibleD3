@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+   - name: create a file
+     file:
+       path: /tmp/file.txt
+       owner: ansible
+       state: touch
+       mode: 0777
+
+
+
+
