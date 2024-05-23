@@ -1,0 +1,22 @@
+---
+- hosts: all
+  become: true
+  vars:
+     courseName: devops program
+     batchnumber: 3
+  tasks:
+    - name: Install HTTP servers
+      yum:
+        name: httpd
+        state: present
+    - name: start the service
+      service: 
+         name: httpd
+         state: started
+         enabled: true
+    - name: copy the HTML file
+      template:
+       src: index.html
+       dest: /var/www/html/index.html
+
+
